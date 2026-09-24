@@ -232,6 +232,7 @@ footer a{color:var(--ink-2)}
     </div>
     <button type="button" class="btn-loc" id="locBtn" data-i18n="use_location">Meinen Standort verwenden</button>
     <div class="nearstate" id="nearState"></div>
+    <div class="nearstate" id="nearLoc" hidden></div>
     <div class="nearlist" id="nearList"></div>
     <p class="small" id="nearAttrib"></p>
   </section>
@@ -310,7 +311,7 @@ de:{
   use_location:'Meinen Standort verwenden', locating:'Standort wird gesucht …',
   loc_denied:'Kein Standort. Die Liste ist ab Stadtzentrum (Zytglogge) sortiert.',
   loc_ok:'Sortiert ab deinem Standort.', from_centre:'Sortiert ab Stadtzentrum (Zytglogge). Standort freigeben für deine Umgebung.',
-  route:'Route', attrib:'Daten: OpenStreetMap-Mitwirkende (ODbL), Stand ',
+  route:'Route', attrib:'Daten: OpenStreetMap-Mitwirkende (ODbL), Stand ', loc_acc:'Genauigkeit', loc_check:'Standort auf Karte prüfen', loc_denied_perm:'Standort verweigert. iPhone: Einstellungen → Datenschutz → Ortungsdienste → Safari-Websites → «Beim Verwenden». Dann Seite neu laden.', loc_unavail:'Standort nicht verfügbar (kein GPS-Signal, Flugmodus?). Liste ab Zytglogge.', loc_timeout:'Standort dauerte zu lange. Ins Freie gehen und nochmals versuchen.', loc_inaccurate:'Ungenau: der Standort stammt wohl vom WLAN, nicht von GPS.',
   lbl_aed:'Defibrillator (AED)', lbl_water:'Trinkwasser', lbl_wc:'Öffentliches WC', access_restricted:'eingeschränkt zugänglich',
   nums_eyebrow:'Schweiz', nums_title:'Notrufnummern',
   nums:[['144','Sanität, Rettungswagen',true],['112','Europäischer Notruf'],['117','Polizei'],['118','Feuerwehr'],['145','Tox Info Suisse, Vergiftungen'],['1414','Rega, Rettungshelikopter'],['143','Die Dargebotene Hand, Gespräch'],['147','Pro Juventute, für Kinder und Jugendliche']],
@@ -372,7 +373,7 @@ fr:{
   use_location:'Utiliser ma position', locating:'Recherche de la position…',
   loc_denied:'Pas de position. La liste est triée depuis le centre-ville (Zytglogge).',
   loc_ok:'Trié depuis votre position.', from_centre:'Trié depuis le centre-ville (Zytglogge). Autorisez la position pour vos environs.',
-  route:'Itinéraire', attrib:'Données : contributeurs OpenStreetMap (ODbL), état au ',
+  route:'Itinéraire', attrib:'Données : contributeurs OpenStreetMap (ODbL), état au ', loc_acc:'Précision', loc_check:'Vérifier la position sur la carte', loc_denied_perm:'Position refusée. iPhone : Réglages → Confidentialité → Service de localisation → Sites web Safari → « Lorsque l’app est active ». Puis recharger.', loc_unavail:'Position indisponible (pas de GPS, mode avion ?). Liste depuis la Zytglogge.', loc_timeout:'La position a pris trop de temps. Sortir à l’extérieur et réessayer.', loc_inaccurate:'Imprécis : la position vient probablement du Wi-Fi, pas du GPS.',
   lbl_aed:'Défibrillateur (DAE)', lbl_water:'Eau potable', lbl_wc:'WC public', access_restricted:'accès restreint',
   nums_eyebrow:'Suisse', nums_title:'Numéros d’urgence',
   nums:[['144','Ambulance, urgences sanitaires',true],['112','Numéro d’urgence européen'],['117','Police'],['118','Pompiers'],['145','Tox Info Suisse, intoxications'],['1414','Rega, hélicoptère de sauvetage'],['143','La Main Tendue, écoute'],['147','Pro Juventute, enfants et jeunes']],
@@ -434,7 +435,7 @@ it:{
   use_location:'Usa la mia posizione', locating:'Ricerca della posizione…',
   loc_denied:'Nessuna posizione. L’elenco è ordinato dal centro città (Zytglogge).',
   loc_ok:'Ordinato dalla tua posizione.', from_centre:'Ordinato dal centro città (Zytglogge). Consenti la posizione per i tuoi dintorni.',
-  route:'Percorso', attrib:'Dati: contributori OpenStreetMap (ODbL), aggiornati al ',
+  route:'Percorso', attrib:'Dati: contributori OpenStreetMap (ODbL), aggiornati al ', loc_acc:'Precisione', loc_check:'Verifica la posizione sulla mappa', loc_denied_perm:'Posizione negata. iPhone: Impostazioni → Privacy → Localizzazione → Siti web Safari → «Mentre usi l’app». Poi ricarica.', loc_unavail:'Posizione non disponibile (niente GPS, modalità aereo?). Elenco dalla Zytglogge.', loc_timeout:'La posizione ha richiesto troppo tempo. Uscire all’aperto e riprovare.', loc_inaccurate:'Imprecisa: la posizione viene probabilmente dal Wi-Fi, non dal GPS.',
   lbl_aed:'Defibrillatore (DAE)', lbl_water:'Acqua potabile', lbl_wc:'WC pubblico', access_restricted:'accesso limitato',
   nums_eyebrow:'Svizzera', nums_title:'Numeri d’emergenza',
   nums:[['144','Ambulanza, emergenza sanitaria',true],['112','Numero d’emergenza europeo'],['117','Polizia'],['118','Pompieri'],['145','Tox Info Suisse, intossicazioni'],['1414','Rega, elicottero di soccorso'],['143','Telefono Amico, ascolto'],['147','Pro Juventute, bambini e giovani']],
@@ -496,7 +497,7 @@ en:{
   use_location:'Use my location', locating:'Finding your location…',
   loc_denied:'No location. The list is sorted from the city centre (Zytglogge).',
   loc_ok:'Sorted from your location.', from_centre:'Sorted from the city centre (Zytglogge). Allow location for your surroundings.',
-  route:'Directions', attrib:'Data: OpenStreetMap contributors (ODbL), as of ',
+  route:'Directions', attrib:'Data: OpenStreetMap contributors (ODbL), as of ', loc_acc:'Accuracy', loc_check:'Check location on map', loc_denied_perm:'Location denied. iPhone: Settings → Privacy → Location Services → Safari Websites → “While Using”. Then reload.', loc_unavail:'Location unavailable (no GPS, airplane mode?). List from Zytglogge.', loc_timeout:'Location took too long. Step outside and try again.', loc_inaccurate:'Inaccurate: the position probably comes from Wi-Fi, not GPS.',
   lbl_aed:'Defibrillator (AED)', lbl_water:'Drinking water', lbl_wc:'Public toilet', access_restricted:'restricted access',
   nums_eyebrow:'Switzerland', nums_title:'Emergency numbers',
   nums:[['144','Ambulance, medical emergency',true],['112','European emergency number'],['117','Police'],['118','Fire brigade'],['145','Tox Info Suisse, poisoning'],['1414','Rega, air rescue'],['143','Listening line (Dargebotene Hand)'],['147','Pro Juventute, children and teens']],
@@ -760,17 +761,31 @@ document.querySelectorAll('.chip[data-kind]').forEach(function(c){
 
 $('locBtn').addEventListener('click', function(){
   var btn = $('locBtn');
-  if (!navigator.geolocation) { $('nearState').textContent = t('loc_denied'); return; }
-  btn.disabled = true; $('nearState').textContent = t('locating');
+  if (!navigator.geolocation) { $('nearState').textContent = t('loc_unavail'); return; }
+  btn.disabled = true; $('nearState').textContent = t('locating'); $('nearLoc').hidden = true;
   try {
     navigator.geolocation.getCurrentPosition(function(pos){
-      nearOrigin = {lat: pos.coords.latitude, lon: pos.coords.longitude};
-      btn.disabled = false; renderNear();
-    }, function(){
-      nearOrigin = null; btn.disabled = false; renderNear(); $('nearState').textContent = t('loc_denied');
-    }, {enableHighAccuracy: true, timeout: 12000, maximumAge: 60000});
-  } catch (e) { btn.disabled = false; $('nearState').textContent = t('loc_denied'); }
+      nearOrigin = {lat: pos.coords.latitude, lon: pos.coords.longitude, acc: Math.round(pos.coords.accuracy || 0)};
+      btn.disabled = false; renderNear(); showLoc();
+    }, function(err){
+      nearOrigin = null; btn.disabled = false; renderNear();
+      var code = err && err.code;
+      $('nearState').textContent = code === 1 ? t('loc_denied_perm') : code === 3 ? t('loc_timeout') : t('loc_unavail');
+    }, {enableHighAccuracy: true, timeout: 25000, maximumAge: 0});
+  } catch (e) { btn.disabled = false; $('nearState').textContent = t('loc_unavail'); }
 });
+
+function showLoc(){
+  var box = $('nearLoc'); box.textContent = ''; box.hidden = !nearOrigin;
+  if (!nearOrigin) return;
+  var lat = nearOrigin.lat.toFixed(5), lon = nearOrigin.lon.toFixed(5);
+  var a = el('a', null, t('loc_check'));
+  a.href = 'https://www.openstreetmap.org/?mlat=' + lat + '&mlon=' + lon + '#map=17/' + lat + '/' + lon;
+  a.target = '_blank'; a.rel = 'noopener';
+  box.appendChild(document.createTextNode(lat + ', ' + lon + ' · ' + t('loc_acc') + ' ±' + nearOrigin.acc + ' m · '));
+  box.appendChild(a);
+  if (nearOrigin.acc > 300) { box.appendChild(document.createTextNode(' · ' + t('loc_inaccurate'))); }
+}
 
 function loadNear(){
   if (!window.fetch) return;
