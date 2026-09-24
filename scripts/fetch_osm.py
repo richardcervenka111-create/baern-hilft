@@ -67,12 +67,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data/bern.json")
     ap.add_argument("--endpoint", default="https://overpass-api.de/api/interpreter")
+    ap.add_argument("--raw", help="read a saved Overpass JSON answer instead of querying (see --url)")
+    ap.add_argument("--url", action="store_true", help="print the GET url to open in a browser and exit")
     args = ap.parse_args()
 
-    body = urllib.parse.urlencode({"data": QUERY}).encode()
-    req = urllib.request.Request(args.endpoint, data=body, headers={"User-Agent": "baern-hilft/1.0 (open data, once per release)"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        payload = json.load(r)
+    if args.url:
+        print(args.endpoint + "?" + urllib.parse.urlencode({"data": QUERY}))
+        return 0
+    if args.raw:
+        with open(args.raw, encoding="utf-8") as f:
+            payload = json.load(f)
+    else:
+        body = urllib.parse.urlencode({"data": QUERY}).encode()
+        req = urllib.request.Request(args.endpoint, data=body, headers={"User-Agent": "baern-hilft/1.0 (open data, once per release)"})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            payload = json.load(r)
 
     rows = [c for c in (compact(e) for e in payload.get("elements", [])) if c]
     rows.sort(key=lambda r: (r["k"], r["lat"], r["lon"]))
