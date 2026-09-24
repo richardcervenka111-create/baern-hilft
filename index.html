@@ -131,6 +131,23 @@ summary .tag.hot{background:var(--red-soft);color:var(--red)}
 .numcard.prime{border-color:var(--red);background:var(--red-soft)}
 .numcard.prime b{color:var(--red)}
 
+/* nearby */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-weight:700;font-size:15px;min-height:44px;color:var(--ink-2)}
+.chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);background:var(--surface-2)}
+.chip .k{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.k-aed{background:var(--red)} .k-water{background:#2B7DD1} .k-wc{background:var(--go)}
+.nearlist{display:grid;gap:8px}
+.near{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.near .dist{font:400 22px/1 var(--display);font-variant-numeric:tabular-nums;min-width:64px}
+.near .what{display:grid;gap:2px;min-width:0}
+.near .what b{font-size:16px;overflow-wrap:anywhere}
+.near .what span{font-size:14px;color:var(--ink-2);overflow-wrap:anywhere}
+.near a{display:inline-grid;place-items:center;min-height:44px;padding:0 14px;border-radius:10px;background:var(--surface-2);text-decoration:none;font-weight:700;font-size:15px;color:var(--ink)}
+.btn-loc{border:2px solid var(--ink);background:transparent;border-radius:12px;padding:12px 18px;font-weight:700;font-size:17px;min-height:52px;color:var(--ink);justify-self:start}
+.btn-loc:disabled{opacity:.6}
+.nearstate{font-size:15px;color:var(--muted)}
+
 footer{display:grid;gap:8px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 footer a{color:var(--ink-2)}
 .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:700;font-size:15px;opacity:0;pointer-events:none;transition:opacity .2s}
@@ -198,6 +215,22 @@ footer a{color:var(--ink-2)}
       <h2 id="guidesTitle" data-i18n="guides_title">Was tun, bis Hilfe kommt</h2>
     </div>
     <div id="guides"></div>
+  </section>
+
+  <section id="near" aria-labelledby="nearTitle" hidden>
+    <div>
+      <div class="eyebrow" data-i18n="near_eyebrow">In der Nähe</div>
+      <h2 id="nearTitle" data-i18n="near_title">Defibrillator, Trinkwasser, WC</h2>
+    </div>
+    <div class="chips" role="group" aria-label="Filter">
+      <button type="button" class="chip" data-kind="aed" aria-pressed="true"><span class="k k-aed"></span><span data-i18n="kind_aed">Defibrillator</span></button>
+      <button type="button" class="chip" data-kind="water" aria-pressed="true"><span class="k k-water"></span><span data-i18n="kind_water">Trinkwasser</span></button>
+      <button type="button" class="chip" data-kind="wc" aria-pressed="true"><span class="k k-wc"></span><span data-i18n="kind_wc">WC</span></button>
+    </div>
+    <button type="button" class="btn-loc" id="locBtn" data-i18n="use_location">Meinen Standort verwenden</button>
+    <div class="nearstate" id="nearState"></div>
+    <div class="nearlist" id="nearList"></div>
+    <p class="small" id="nearAttrib"></p>
   </section>
 
   <section aria-labelledby="numsTitle">
@@ -269,6 +302,13 @@ de:{
       'Blutet es durch: mehr Stoff darauf, nicht wegnehmen, noch fester drücken.',
       'Person hinlegen, warm halten. Bleibt bei ihr, bis der Rettungsdienst da ist.'],true]
   ],
+  near_eyebrow:'In der Nähe', near_title:'Defibrillator, Trinkwasser, WC',
+  kind_aed:'Defibrillator', kind_water:'Trinkwasser', kind_wc:'WC',
+  use_location:'Meinen Standort verwenden', locating:'Standort wird gesucht …',
+  loc_denied:'Kein Standort. Die Liste ist ab Stadtzentrum (Zytglogge) sortiert.',
+  loc_ok:'Sortiert ab deinem Standort.', from_centre:'Sortiert ab Stadtzentrum (Zytglogge). Standort freigeben für deine Umgebung.',
+  route:'Route', attrib:'Daten: OpenStreetMap-Mitwirkende (ODbL), Stand ',
+  lbl_aed:'Defibrillator (AED)', lbl_water:'Trinkwasser', lbl_wc:'Öffentliches WC', access_restricted:'eingeschränkt zugänglich',
   nums_eyebrow:'Schweiz', nums_title:'Notrufnummern',
   nums:[['144','Sanität, Rettungswagen',true],['112','Europäischer Notruf'],['117','Polizei'],['118','Feuerwehr'],['145','Tox Info Suisse, Vergiftungen'],['1414','Rega, Rettungshelikopter'],['143','Die Dargebotene Hand, Gespräch'],['147','Pro Juventute, für Kinder und Jugendliche']],
   nums_note:'Alle Nummern sind gratis, auch ohne Guthaben und aus jedem Netz. Nummer antippen und markieren, um sie zu kopieren.',
@@ -324,6 +364,13 @@ fr:{
       'Si ça traverse : ajoutez du tissu, n’enlevez rien, appuyez plus fort.',
       'Allongez la personne, gardez-la au chaud. Restez jusqu’à l’arrivée des secours.'],true]
   ],
+  near_eyebrow:'À proximité', near_title:'Défibrillateur, eau potable, WC',
+  kind_aed:'Défibrillateur', kind_water:'Eau potable', kind_wc:'WC',
+  use_location:'Utiliser ma position', locating:'Recherche de la position…',
+  loc_denied:'Pas de position. La liste est triée depuis le centre-ville (Zytglogge).',
+  loc_ok:'Trié depuis votre position.', from_centre:'Trié depuis le centre-ville (Zytglogge). Autorisez la position pour vos environs.',
+  route:'Itinéraire', attrib:'Données : contributeurs OpenStreetMap (ODbL), état au ',
+  lbl_aed:'Défibrillateur (DAE)', lbl_water:'Eau potable', lbl_wc:'WC public', access_restricted:'accès restreint',
   nums_eyebrow:'Suisse', nums_title:'Numéros d’urgence',
   nums:[['144','Ambulance, urgences sanitaires',true],['112','Numéro d’urgence européen'],['117','Police'],['118','Pompiers'],['145','Tox Info Suisse, intoxications'],['1414','Rega, hélicoptère de sauvetage'],['143','La Main Tendue, écoute'],['147','Pro Juventute, enfants et jeunes']],
   nums_note:'Tous ces numéros sont gratuits, même sans crédit et depuis n’importe quel réseau. Touchez un numéro et sélectionnez-le pour le copier.',
@@ -379,6 +426,13 @@ it:{
       'Se passa attraverso: aggiungi stoffa, non togliere nulla, premi più forte.',
       'Stendi la persona, tienila al caldo. Resta finché arrivano i soccorsi.'],true]
   ],
+  near_eyebrow:'Nelle vicinanze', near_title:'Defibrillatore, acqua potabile, WC',
+  kind_aed:'Defibrillatore', kind_water:'Acqua potabile', kind_wc:'WC',
+  use_location:'Usa la mia posizione', locating:'Ricerca della posizione…',
+  loc_denied:'Nessuna posizione. L’elenco è ordinato dal centro città (Zytglogge).',
+  loc_ok:'Ordinato dalla tua posizione.', from_centre:'Ordinato dal centro città (Zytglogge). Consenti la posizione per i tuoi dintorni.',
+  route:'Percorso', attrib:'Dati: contributori OpenStreetMap (ODbL), aggiornati al ',
+  lbl_aed:'Defibrillatore (DAE)', lbl_water:'Acqua potabile', lbl_wc:'WC pubblico', access_restricted:'accesso limitato',
   nums_eyebrow:'Svizzera', nums_title:'Numeri d’emergenza',
   nums:[['144','Ambulanza, emergenza sanitaria',true],['112','Numero d’emergenza europeo'],['117','Polizia'],['118','Pompieri'],['145','Tox Info Suisse, intossicazioni'],['1414','Rega, elicottero di soccorso'],['143','Telefono Amico, ascolto'],['147','Pro Juventute, bambini e giovani']],
   nums_note:'Tutti i numeri sono gratuiti, anche senza credito e da qualsiasi rete. Tocca un numero e selezionalo per copiarlo.',
@@ -434,6 +488,13 @@ en:{
       'If it soaks through: add more cloth, do not remove anything, press harder.',
       'Lay the person down, keep them warm. Stay until the ambulance arrives.'],true]
   ],
+  near_eyebrow:'Nearby', near_title:'Defibrillator, drinking water, toilets',
+  kind_aed:'Defibrillator', kind_water:'Drinking water', kind_wc:'Toilets',
+  use_location:'Use my location', locating:'Finding your location…',
+  loc_denied:'No location. The list is sorted from the city centre (Zytglogge).',
+  loc_ok:'Sorted from your location.', from_centre:'Sorted from the city centre (Zytglogge). Allow location for your surroundings.',
+  route:'Directions', attrib:'Data: OpenStreetMap contributors (ODbL), as of ',
+  lbl_aed:'Defibrillator (AED)', lbl_water:'Drinking water', lbl_wc:'Public toilet', access_restricted:'restricted access',
   nums_eyebrow:'Switzerland', nums_title:'Emergency numbers',
   nums:[['144','Ambulance, medical emergency',true],['112','European emergency number'],['117','Police'],['118','Fire brigade'],['145','Tox Info Suisse, poisoning'],['1414','Rega, air rescue'],['143','Listening line (Dargebotene Hand)'],['147','Pro Juventute, children and teens']],
   nums_note:'All numbers are free, even without credit and from any network. Tap a number and select it to copy.',
@@ -639,6 +700,83 @@ $('startBtn').addEventListener('click', function(){ if (running) stop(); else st
 document.addEventListener('visibilitychange', function(){
   if (document.visibilityState === 'visible' && running && ctx && ctx.state === 'suspended') { try { ctx.resume(); } catch (e) {} }
 });
+
+/* ---------- Nearby (data/bern.json, built by scripts/fetch_osm.py) ---------- */
+var CENTRE = {lat: 46.948, lon: 7.4474}; // Zytglogge
+var nearData = null, nearOrigin = null, nearKinds = {aed:true, water:true, wc:true};
+
+function haversine(a, b){
+  var R = 6371000, toRad = Math.PI/180;
+  var dLat = (b.lat-a.lat)*toRad, dLon = (b.lon-a.lon)*toRad;
+  var h = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(a.lat*toRad)*Math.cos(b.lat*toRad)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+function fmtDist(m){ return m < 950 ? Math.round(m/10)*10 + ' m' : (m/1000).toFixed(1).replace('.', lang==='en' ? '.' : ',') + ' km'; }
+
+function renderNear(){
+  if (!nearData) return;
+  var list = $('nearList'); list.textContent = '';
+  var origin = nearOrigin || CENTRE;
+  var rows = nearData.items.filter(function(x){ return nearKinds[x.k]; }).map(function(x){
+    return {x:x, d:haversine(origin, x)};
+  }).sort(function(a,b){ return a.d-b.d; }).slice(0, 8);
+  rows.forEach(function(r){
+    var x = r.x, row = el('div','near');
+    row.appendChild(el('div','dist', fmtDist(r.d)));
+    var what = el('div','what');
+    var label = t(x.k === 'aed' ? 'lbl_aed' : x.k === 'wc' ? 'lbl_wc' : 'lbl_water');
+    what.appendChild(el('b', null, x.n ? x.n : label));
+    var meta = [];
+    if (x.n) meta.push(label);
+    if (x.l) meta.push(x.l);
+    if (x.h) meta.push(x.h);
+    if (x.a) meta.push(t('access_restricted'));
+    if (meta.length) what.appendChild(el('span', null, meta.join(' · ')));
+    row.appendChild(what);
+    var a = el('a', null, t('route'));
+    a.href = 'https://www.google.com/maps/dir/?api=1&destination=' + x.lat + ',' + x.lon + '&travelmode=walking';
+    a.target = '_blank'; a.rel = 'noopener';
+    row.appendChild(a);
+    list.appendChild(row);
+  });
+  $('nearState').textContent = nearOrigin ? t('loc_ok') : t('from_centre');
+  $('nearAttrib').textContent = t('attrib') + (nearData.fetched || '');
+  $('locBtn').textContent = t('use_location');
+}
+
+document.querySelectorAll('.chip').forEach(function(c){
+  c.addEventListener('click', function(){
+    var k = c.getAttribute('data-kind');
+    nearKinds[k] = !nearKinds[k];
+    c.setAttribute('aria-pressed', String(nearKinds[k]));
+    renderNear();
+  });
+});
+
+$('locBtn').addEventListener('click', function(){
+  var btn = $('locBtn');
+  if (!navigator.geolocation) { $('nearState').textContent = t('loc_denied'); return; }
+  btn.disabled = true; $('nearState').textContent = t('locating');
+  try {
+    navigator.geolocation.getCurrentPosition(function(pos){
+      nearOrigin = {lat: pos.coords.latitude, lon: pos.coords.longitude};
+      btn.disabled = false; renderNear();
+    }, function(){
+      nearOrigin = null; btn.disabled = false; renderNear(); $('nearState').textContent = t('loc_denied');
+    }, {enableHighAccuracy: true, timeout: 12000, maximumAge: 60000});
+  } catch (e) { btn.disabled = false; $('nearState').textContent = t('loc_denied'); }
+});
+
+function loadNear(){
+  if (!window.fetch) return;
+  fetch('data/bern.json', {cache: 'default'}).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
+    if (!d || !d.items || !d.items.length) return;
+    nearData = d; $('near').hidden = false; renderNear();
+  }).catch(function(){ /* no data: section stays hidden */ });
+}
+var _render = render;
+render = function(){ _render(); renderNear(); };
+loadNear();
 
 render();
 })();
