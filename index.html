@@ -720,7 +720,7 @@ function renderNear(){
   if (!nearData) return;
   var list = $('nearList'); list.textContent = '';
   var origin = nearOrigin || CENTRE;
-  var rows = nearData.items.filter(function(x){ return nearKinds[x.k] && (!wheelOnly || x.w === 'yes'); }).map(function(x){
+  var rows = nearData.items.filter(function(x){ return nearKinds[x.k] && (!wheelOnly || x.w === 'yes' || x.w === 'designated'); }).map(function(x){
     return {x:x, d:haversine(origin, x)};
   }).sort(function(a,b){ return a.d-b.d; }).slice(0, 8);
   rows.forEach(function(r){
@@ -734,7 +734,7 @@ function renderNear(){
     if (x.l) meta.push(x.l);
     if (x.h) meta.push(x.h);
     if (x.a) meta.push(t('access_restricted'));
-    if (x.w === 'yes') meta.push(t('wheel_yes')); else if (x.w === 'limited') meta.push(t('wheel_limited'));
+    if (x.w === 'yes' || x.w === 'designated') meta.push(t('wheel_yes')); else if (x.w === 'limited') meta.push(t('wheel_limited'));
     if (meta.length) what.appendChild(el('span', null, meta.join(' · ')));
     row.appendChild(what);
     var a = el('a', null, t('route'));
