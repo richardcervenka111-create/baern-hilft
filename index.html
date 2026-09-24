@@ -1,0 +1,637 @@
+<title>Bärn hilft</title>
+<meta name="description" content="Notfallhilfe für Bern: Reanimations-Metronom 30:2, Schweizer Notrufnummern und Erste-Hilfe-Schritte in vier Sprachen. Ohne App, ohne Tracking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Archivo+Black&display=swap">
+<style>
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --surface-2:#E6EAEF; --line:#C9D2DC;
+  --ink:#121820; --ink-2:#3A4756; --muted:#66768A;
+  --red:#C8102E; --red-ink:#FFFFFF; --red-soft:#FBE3E7;
+  --gold:#E3B505; --gold-soft:#FBF1C7;
+  --go:#1F7A4D; --go-soft:#DCF2E6;
+  --pulse:#C8102E;
+  --shadow:0 10px 30px rgba(18,24,32,.10);
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1319; --surface:#171E27; --surface-2:#1F2933; --line:#33414F;
+    --ink:#EEF2F6; --ink-2:#C3CDD8; --muted:#8C9BAB;
+    --red:#E5333F; --red-ink:#FFFFFF; --red-soft:#3D1A20;
+    --gold:#F2C530; --gold-soft:#3A3212;
+    --go:#4FCF8A; --go-soft:#173626;
+    --pulse:#FF5A63;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1319; --surface:#171E27; --surface-2:#1F2933; --line:#33414F;
+  --ink:#EEF2F6; --ink-2:#C3CDD8; --muted:#8C9BAB;
+  --red:#E5333F; --red-ink:#FFFFFF; --red-soft:#3D1A20;
+  --gold:#F2C530; --gold-soft:#3A3212;
+  --go:#4FCF8A; --go-soft:#173626;
+  --pulse:#FF5A63;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 var(--body);-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:12px 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.wrap>*{min-width:0}
+section{min-width:0}
+h1,h2,h3{margin:0;line-height:1.1;text-wrap:balance}
+h1{font:400 30px/1 var(--display);letter-spacing:-.01em}
+h2{font:700 22px/1.2 var(--body)}
+h3{font:700 18px/1.25 var(--body)}
+p{margin:0;max-width:62ch}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+a{color:var(--ink);text-decoration-color:var(--muted)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* header */
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:6px}
+.brand{display:grid;gap:2px}
+.brand small{font-size:14px;color:var(--muted)}
+.langs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:999px}
+.langs button{border:0;background:transparent;border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px;color:var(--ink-2)}
+.langs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+
+/* call card */
+.call{background:var(--red);color:var(--red-ink);border-radius:20px;padding:20px 20px 18px;display:grid;gap:10px;box-shadow:var(--shadow)}
+.call .eyebrow{color:var(--red-ink);opacity:.85}
+.call .num{font:400 clamp(64px,22vw,96px)/1 var(--display);letter-spacing:.02em;font-variant-numeric:tabular-nums;user-select:all}
+.call .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.call p{color:var(--red-ink);opacity:.95;font-size:17px}
+.btn-ghost{border:2px solid rgba(255,255,255,.75);background:transparent;color:var(--red-ink);border-radius:12px;padding:10px 14px;font-weight:700;min-height:48px}
+.btn-ghost:active{background:rgba(255,255,255,.15)}
+
+/* sections */
+section{display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.steps{display:grid;gap:10px;counter-reset:s}
+.step{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:400 20px/1 var(--display)}
+.step b{display:block;font-size:18px}
+.step span{color:var(--ink-2);font-size:16px}
+
+/* metronome */
+.metro{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;justify-items:center;text-align:center;padding-block:22px}
+.metro>*{max-width:100%}
+.dial{position:relative;width:min(72vw,260px);aspect-ratio:1;max-width:100%;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);border:6px solid var(--line);transition:transform .08s ease-out,border-color .08s}
+.dial.beat{transform:scale(1.06);border-color:var(--pulse)}
+.dial.breath{border-color:var(--gold)}
+.dial .big{font:400 clamp(72px,26vw,120px)/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.dial .sub{position:absolute;bottom:14%;font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.dial.breath .big{font-size:clamp(40px,14vw,64px)}
+.metro .stats{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-variant-numeric:tabular-nums;color:var(--ink-2);font-size:16px}
+.metro .stats b{color:var(--ink);font-size:20px}
+.btn-main{border:0;background:var(--red);color:var(--red-ink);border-radius:16px;padding:18px 28px;font-size:22px;font-weight:700;min-width:min(100%,280px);min-height:64px;box-shadow:var(--shadow)}
+.btn-main[data-running="true"]{background:var(--ink);color:var(--bg)}
+.btn-main:active{transform:translateY(1px)}
+.seg{display:inline-flex;flex-wrap:wrap;justify-content:center;background:var(--surface-2);border-radius:12px;padding:4px;gap:4px;max-width:100%}
+.seg button{border:0;background:transparent;border-radius:9px;padding:9px 14px;font-weight:700;font-size:15px;color:var(--ink-2);min-height:44px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.notice{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px 14px;font-size:16px;font-weight:700;text-align:left;width:100%}
+.notice.gold{background:var(--gold-soft);color:var(--ink)}
+.notice.go{background:var(--go-soft);color:var(--ink)}
+.notice .dot{flex:none;width:12px;height:12px;border-radius:50%;margin-top:6px;background:var(--gold)}
+.notice.go .dot{background:var(--go)}
+.small{font-size:15px;color:var(--muted)}
+
+/* guides */
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+details+details{margin-top:8px}
+summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;min-height:56px}
+summary::-webkit-details-marker{display:none}
+summary .chev{margin-left:auto;width:22px;height:22px;flex:none;transition:transform .15s}
+details[open] summary .chev{transform:rotate(180deg)}
+summary .tag{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font:400 15px/1 var(--display);background:var(--surface-2);color:var(--ink)}
+summary .tag.hot{background:var(--red-soft);color:var(--red)}
+.guide{padding:0 16px 16px;display:grid;gap:8px}
+.guide ol{margin:0;padding-left:22px;display:grid;gap:6px;font-size:17px}
+.guide .when{font-size:15px;color:var(--ink-2);background:var(--surface-2);border-radius:8px;padding:8px 10px}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.numcard{display:grid;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.numcard b{font:400 26px/1.1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:.02em;user-select:all}
+.numcard span{font-size:14px;color:var(--ink-2)}
+.numcard.prime{border-color:var(--red);background:var(--red-soft)}
+.numcard.prime b{color:var(--red)}
+
+footer{display:grid;gap:8px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+footer a{color:var(--ink-2)}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:700;font-size:15px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){.dial{transition:none}.dial.beat{transform:none}.summary .chev{transition:none}}
+@media (max-width:420px){body{font-size:17px}.btn-main{width:100%}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Bärn hilft</h1>
+      <small data-i18n="tagline">Erste Hilfe für Bern. Ohne App, ohne Konto.</small>
+    </div>
+    <div class="langs" role="group" aria-label="Sprache">
+      <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+      <button type="button" data-lang="it" aria-pressed="false">IT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <section class="call" aria-labelledby="callTitle">
+    <div class="eyebrow" id="callTitle" data-i18n="call_eyebrow">Notfall? Sofort anrufen</div>
+    <div class="row">
+      <div class="num" id="mainNumber">144</div>
+      <button type="button" class="btn-ghost" id="copy144" data-i18n="copy">Nummer kopieren</button>
+    </div>
+    <p data-i18n="call_text">144 ist die Sanitätsnotrufzentrale. Lautsprecher einschalten, Telefon neben die Person legen und nicht auflegen: die Zentrale sagt dir, was zu tun ist.</p>
+    <p class="small" style="color:inherit;opacity:.85" data-i18n="call_where">Sag zuerst WO: Strasse, Hausnummer, Stockwerk. In Bern zählt jede Minute bis zum Rettungswagen.</p>
+  </section>
+
+  <section id="cpr" aria-labelledby="cprTitle">
+    <div>
+      <div class="eyebrow" data-i18n="cpr_eyebrow">Reanimation</div>
+      <h2 id="cprTitle" data-i18n="cpr_title">Person reagiert nicht und atmet nicht normal</h2>
+    </div>
+    <div class="card steps" id="cprSteps"></div>
+
+    <div class="card metro" aria-live="off">
+      <div class="seg" role="group" aria-label="Modus">
+        <button type="button" id="modeStd" aria-pressed="true" data-i18n="mode_std">30 Drücken : 2 Beatmen</button>
+        <button type="button" id="modeHands" aria-pressed="false" data-i18n="mode_hands">Nur Drücken</button>
+      </div>
+      <div class="dial" id="dial" role="timer" aria-live="polite">
+        <div class="big" id="dialNum">—</div>
+        <div class="sub" id="dialSub" data-i18n="dial_ready">bereit</div>
+      </div>
+      <button type="button" class="btn-main" id="startBtn" data-running="false" data-i18n="start">Start: Drücken im Takt</button>
+      <div class="stats">
+        <div><span data-i18n="rate">Takt</span> <b>110/min</b></div>
+        <div><span data-i18n="elapsed">Zeit</span> <b id="elapsed">0:00</b></div>
+        <div><span data-i18n="compressions">Drücke</span> <b id="total">0</b></div>
+      </div>
+      <div class="notice go"><span class="dot"></span><span data-i18n="depth_hint">Brustmitte, beide Hände, Arme gestreckt. 5 bis 6 cm tief drücken und ganz entlasten.</span></div>
+      <div class="notice gold" id="swapNotice" hidden><span class="dot"></span><span data-i18n="swap_hint">2 Minuten: Wenn jemand da ist, jetzt abwechseln. Nur so kurz wie nötig unterbrechen.</span></div>
+      <p class="small" data-i18n="aed_hint">Ist ein Defibrillator (AED) in der Nähe? Jemanden holen schicken. Einschalten und den Ansagen folgen, weiterdrücken bis er sagt: Stopp.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="guidesTitle">
+    <div>
+      <div class="eyebrow" data-i18n="guides_eyebrow">Weitere Notfälle</div>
+      <h2 id="guidesTitle" data-i18n="guides_title">Was tun, bis Hilfe kommt</h2>
+    </div>
+    <div id="guides"></div>
+  </section>
+
+  <section aria-labelledby="numsTitle">
+    <div>
+      <div class="eyebrow" data-i18n="nums_eyebrow">Schweiz</div>
+      <h2 id="numsTitle" data-i18n="nums_title">Notrufnummern</h2>
+    </div>
+    <div class="nums" id="nums"></div>
+    <p class="small" data-i18n="nums_note">Alle Nummern sind gratis, auch ohne Guthaben und aus jedem Netz. Nummer antippen und markieren, um sie zu kopieren.</p>
+  </section>
+
+  <footer>
+    <p data-i18n="foot_src">Inhalt nach den Reanimationsrichtlinien des European Resuscitation Council (ERC 2021), wie sie der Swiss Resuscitation Council in der Schweiz anwendet. Diese Seite ersetzt keinen Kurs und keinen Notruf.</p>
+    <p><a href="https://www.defikarte.ch" target="_blank" rel="noopener" data-i18n="foot_aed">Nächster Defibrillator: defikarte.ch</a> · <a href="https://www.resuscitation.ch" target="_blank" rel="noopener" data-i18n="foot_course">Kurs finden: resuscitation.ch</a></p>
+    <p data-i18n="foot_open">Offen und frei nutzbar für jede Stadt. Keine Daten werden gesendet oder gespeichert, ausser deiner Sprachwahl auf diesem Gerät.</p>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+'use strict';
+var I18N = {
+de:{
+  tagline:'Erste Hilfe für Bern. Ohne App, ohne Konto.',
+  call_eyebrow:'Notfall? Sofort anrufen', copy:'Nummer kopieren', copied:'Kopiert: 144',
+  call_text:'144 ist die Sanitätsnotrufzentrale. Lautsprecher einschalten, Telefon neben die Person legen und nicht auflegen: die Zentrale sagt dir, was zu tun ist.',
+  call_where:'Sag zuerst WO: Strasse, Hausnummer, Stockwerk. In Bern zählt jede Minute bis zum Rettungswagen.',
+  cpr_eyebrow:'Reanimation', cpr_title:'Person reagiert nicht und atmet nicht normal',
+  steps:[
+    ['Ansprechen, schütteln','Laut rufen, an den Schultern rütteln. Keine Reaktion? Um Hilfe rufen.'],
+    ['Atmung prüfen, höchstens 10 Sekunden','Kopf leicht nach hinten, Kinn anheben. Keine oder nur schnappende Atmung zählt als „atmet nicht“.'],
+    ['144 anrufen, Lautsprecher an','Oder jemanden anrufen lassen und einen AED holen lassen.'],
+    ['Drücken. Sofort. Nicht aufhören.','Start unten drücken: die Seite gibt den Takt. 30 Mal drücken, 2 Mal beatmen. Wer nicht beatmen will oder kann: nur drücken.']
+  ],
+  mode_std:'30 Drücken : 2 Beatmen', mode_hands:'Nur Drücken',
+  dial_ready:'bereit', dial_press:'drücken', dial_breath:'2 × beatmen', dial_go:'weiter',
+  start:'Start: Drücken im Takt', stop:'Stopp',
+  rate:'Takt', elapsed:'Zeit', compressions:'Drücke',
+  depth_hint:'Brustmitte, beide Hände, Arme gestreckt. 5 bis 6 cm tief drücken und ganz entlasten.',
+  swap_hint:'2 Minuten: Wenn jemand da ist, jetzt abwechseln. Nur so kurz wie nötig unterbrechen.',
+  aed_hint:'Ist ein Defibrillator (AED) in der Nähe? Jemanden holen schicken. Einschalten und den Ansagen folgen, weiterdrücken bis er sagt: Stopp.',
+  guides_eyebrow:'Weitere Notfälle', guides_title:'Was tun, bis Hilfe kommt',
+  guides:[
+    ['Bewusstlos, atmet aber normal','Reagiert nicht, Brustkorb hebt und senkt sich regelmässig.',[
+      '144 anrufen.',
+      'Auf die Seite legen (Seitenlage): Kopf leicht nach hinten, Mund nach unten, damit nichts in die Atemwege läuft.',
+      'Atmung jede Minute prüfen. Hört sie auf: auf den Rücken drehen und mit Drücken beginnen.',
+      'Zudecken, dabei bleiben.'],false],
+    ['Ersticken','Kann nicht sprechen, husten oder atmen, greift sich an den Hals.',[
+      'Zum Husten auffordern, wenn noch möglich.',
+      '5 kräftige Schläge zwischen die Schulterblätter mit dem Handballen, Person nach vorne gebeugt.',
+      '5 Mal Oberbauch-Stösse: von hinten umfassen, Faust zwischen Nabel und Brustbein, ruckartig nach innen und oben ziehen.',
+      'Abwechseln 5 Schläge, 5 Stösse, bis es raus ist. 144 anrufen.',
+      'Wird die Person bewusstlos: hinlegen, 144, sofort drücken wie bei der Reanimation.'],true],
+    ['Schlaganfall','Plötzlich: schiefes Gesicht, ein Arm sinkt ab, undeutliche Sprache.',[
+      'Test: Lächeln lassen (hängt ein Mundwinkel?), beide Arme heben lassen (sinkt einer?), einen Satz nachsprechen lassen (verwaschen?).',
+      'Ein Zeichen reicht: sofort 144, Wort „Schlaganfall“ sagen und wann es begonnen hat.',
+      'Hinsetzen oder hinlegen, nichts zu essen oder trinken geben.',
+      'Nicht abwarten, ob es besser wird. Die Behandlung wirkt nur in den ersten Stunden.'],true],
+    ['Herzinfarkt','Druck oder Enge in der Brust länger als 5 Minuten, oft mit Ausstrahlung in Arm, Kiefer, Rücken; Atemnot, kalter Schweiss, Übelkeit. Bei Frauen oft ohne den typischen Brustschmerz.',[
+      'Sofort 144. Nicht selbst fahren.',
+      'Hinsetzen, Oberkörper hoch, enge Kleidung öffnen, beruhigen.',
+      'Keine Anstrengung. Nichts essen.',
+      'Wird die Person bewusstlos und atmet nicht normal: Reanimation starten, AED holen lassen.'],true],
+    ['Starke Blutung','Blut spritzt oder fliesst stark und hört nicht auf.',[
+      '144 anrufen.',
+      'Fest auf die Wunde drücken, mit Tuch oder Kleidung, und nicht loslassen. Wenn möglich Handschuhe oder einen Plastikbeutel über die Hand.',
+      'Blutet es durch: mehr Stoff darauf, nicht wegnehmen, noch fester drücken.',
+      'Person hinlegen, warm halten. Bleibt bei ihr, bis der Rettungsdienst da ist.'],true]
+  ],
+  nums_eyebrow:'Schweiz', nums_title:'Notrufnummern',
+  nums:[['144','Sanität, Rettungswagen',true],['112','Europäischer Notruf'],['117','Polizei'],['118','Feuerwehr'],['145','Tox Info Suisse, Vergiftungen'],['1414','Rega, Rettungshelikopter'],['143','Die Dargebotene Hand, Gespräch'],['147','Pro Juventute, für Kinder und Jugendliche']],
+  nums_note:'Alle Nummern sind gratis, auch ohne Guthaben und aus jedem Netz. Nummer antippen und markieren, um sie zu kopieren.',
+  foot_src:'Inhalt nach den Reanimationsrichtlinien des European Resuscitation Council (ERC 2021), wie sie der Swiss Resuscitation Council in der Schweiz anwendet. Diese Seite ersetzt keinen Kurs und keinen Notruf.',
+  foot_aed:'Nächster Defibrillator: defikarte.ch', foot_course:'Kurs finden: resuscitation.ch',
+  foot_open:'Offen und frei nutzbar für jede Stadt. Keine Daten werden gesendet oder gespeichert, ausser deiner Sprachwahl auf diesem Gerät.'
+},
+fr:{
+  tagline:'Premiers secours pour Berne. Sans appli, sans compte.',
+  call_eyebrow:'Urgence ? Appelez tout de suite', copy:'Copier le numéro', copied:'Copié : 144',
+  call_text:'Le 144 est la centrale d’appels sanitaires urgents. Mettez le haut-parleur, posez le téléphone près de la personne et ne raccrochez pas : la centrale vous guide.',
+  call_where:'Dites d’abord OÙ : rue, numéro, étage. À Berne, chaque minute compte avant l’arrivée de l’ambulance.',
+  cpr_eyebrow:'Réanimation', cpr_title:'La personne ne réagit pas et ne respire pas normalement',
+  steps:[
+    ['Parler, secouer','Criez, secouez les épaules. Pas de réaction ? Appelez à l’aide.'],
+    ['Vérifier la respiration, 10 secondes au plus','Tête légèrement en arrière, menton relevé. Pas de respiration ou des hoquets : c’est « ne respire pas ».'],
+    ['Appeler le 144, haut-parleur','Ou faites appeler quelqu’un et envoyez chercher un défibrillateur (DAE).'],
+    ['Comprimer. Tout de suite. Sans arrêt.','Appuyez sur Démarrer : la page donne le rythme. 30 compressions, 2 insufflations. Si vous ne voulez ou ne pouvez pas insuffler : compressions seules.']
+  ],
+  mode_std:'30 compressions : 2 insufflations', mode_hands:'Compressions seules',
+  dial_ready:'prêt', dial_press:'comprimer', dial_breath:'2 insufflations', dial_go:'continuer',
+  start:'Démarrer : compressions au rythme', stop:'Stop',
+  rate:'Rythme', elapsed:'Temps', compressions:'Compressions',
+  depth_hint:'Milieu du thorax, deux mains, bras tendus. Enfoncez de 5 à 6 cm et relâchez complètement.',
+  swap_hint:'2 minutes : si quelqu’un est là, changez maintenant. Interrompez le moins possible.',
+  aed_hint:'Un défibrillateur (DAE) à proximité ? Envoyez quelqu’un le chercher. Allumez-le, suivez la voix, continuez à comprimer jusqu’à ce qu’il dise stop.',
+  guides_eyebrow:'Autres urgences', guides_title:'Que faire en attendant les secours',
+  guides:[
+    ['Inconscient mais respire normalement','Ne réagit pas, la poitrine se soulève régulièrement.',[
+      'Appelez le 144.',
+      'Mettez la personne sur le côté (position latérale) : tête légèrement en arrière, bouche vers le bas, pour que rien ne coule dans les voies respiratoires.',
+      'Vérifiez la respiration chaque minute. Si elle s’arrête : sur le dos, commencez les compressions.',
+      'Couvrez-la, restez avec elle.'],false],
+    ['Étouffement','Ne peut ni parler, ni tousser, ni respirer, se tient la gorge.',[
+      'Encouragez à tousser si c’est encore possible.',
+      '5 claques fermes entre les omoplates avec le talon de la main, personne penchée en avant.',
+      '5 compressions abdominales : par derrière, poing entre le nombril et le sternum, tirez d’un coup vers l’intérieur et le haut.',
+      'Alternez 5 claques, 5 compressions jusqu’à expulsion. Appelez le 144.',
+      'Si la personne perd connaissance : allongez-la, 144, commencez les compressions comme pour la réanimation.'],true],
+    ['AVC','Soudain : visage asymétrique, un bras qui tombe, parole confuse.',[
+      'Test : faire sourire (un coin de la bouche tombe ?), lever les deux bras (un descend ?), répéter une phrase (pâteuse ?).',
+      'Un seul signe suffit : 144 tout de suite, dites « AVC » et l’heure du début.',
+      'Asseyez ou allongez la personne, rien à manger ni à boire.',
+      'N’attendez pas que ça passe. Le traitement n’agit que dans les premières heures.'],true],
+    ['Infarctus','Pression ou serrement dans la poitrine depuis plus de 5 minutes, souvent vers le bras, la mâchoire, le dos ; essoufflement, sueurs froides, nausée. Chez les femmes, souvent sans la douleur thoracique typique.',[
+      'Appelez le 144 tout de suite. Ne conduisez pas vous-même.',
+      'Asseyez la personne, torse relevé, desserrez les vêtements, rassurez.',
+      'Aucun effort. Rien à manger.',
+      'Si elle perd connaissance et ne respire pas normalement : réanimation, envoyez chercher un DAE.'],true],
+    ['Hémorragie importante','Le sang jaillit ou coule fort et ne s’arrête pas.',[
+      'Appelez le 144.',
+      'Appuyez fort sur la plaie avec un tissu ou un vêtement, sans relâcher. Si possible, gants ou sac plastique sur la main.',
+      'Si ça traverse : ajoutez du tissu, n’enlevez rien, appuyez plus fort.',
+      'Allongez la personne, gardez-la au chaud. Restez jusqu’à l’arrivée des secours.'],true]
+  ],
+  nums_eyebrow:'Suisse', nums_title:'Numéros d’urgence',
+  nums:[['144','Ambulance, urgences sanitaires',true],['112','Numéro d’urgence européen'],['117','Police'],['118','Pompiers'],['145','Tox Info Suisse, intoxications'],['1414','Rega, hélicoptère de sauvetage'],['143','La Main Tendue, écoute'],['147','Pro Juventute, enfants et jeunes']],
+  nums_note:'Tous ces numéros sont gratuits, même sans crédit et depuis n’importe quel réseau. Touchez un numéro et sélectionnez-le pour le copier.',
+  foot_src:'Contenu selon les directives de réanimation de l’European Resuscitation Council (ERC 2021), telles qu’appliquées en Suisse par le Swiss Resuscitation Council. Cette page ne remplace ni un cours ni un appel d’urgence.',
+  foot_aed:'Défibrillateur le plus proche : defikarte.ch', foot_course:'Trouver un cours : resuscitation.ch',
+  foot_open:'Libre et réutilisable pour toute ville. Aucune donnée n’est envoyée ni enregistrée, sauf votre choix de langue sur cet appareil.'
+},
+it:{
+  tagline:'Primo soccorso per Berna. Senza app, senza account.',
+  call_eyebrow:'Emergenza? Chiama subito', copy:'Copia il numero', copied:'Copiato: 144',
+  call_text:'Il 144 è la centrale d’emergenza sanitaria. Attiva il vivavoce, metti il telefono accanto alla persona e non riagganciare: la centrale ti guida.',
+  call_where:'Di’ prima DOVE: via, numero, piano. A Berna ogni minuto conta prima che arrivi l’ambulanza.',
+  cpr_eyebrow:'Rianimazione', cpr_title:'La persona non reagisce e non respira normalmente',
+  steps:[
+    ['Chiama, scuoti','Grida, scuoti le spalle. Nessuna reazione? Chiedi aiuto.'],
+    ['Controlla il respiro, al massimo 10 secondi','Testa leggermente indietro, mento sollevato. Nessun respiro o solo rantoli: conta come «non respira».'],
+    ['Chiama il 144, vivavoce','Oppure fai chiamare qualcuno e manda a prendere un defibrillatore (DAE).'],
+    ['Comprimi. Subito. Senza fermarti.','Premi Avvia: la pagina dà il ritmo. 30 compressioni, 2 ventilazioni. Se non vuoi o non puoi ventilare: solo compressioni.']
+  ],
+  mode_std:'30 compressioni : 2 ventilazioni', mode_hands:'Solo compressioni',
+  dial_ready:'pronto', dial_press:'comprimi', dial_breath:'2 ventilazioni', dial_go:'continua',
+  start:'Avvia: compressioni a ritmo', stop:'Stop',
+  rate:'Ritmo', elapsed:'Tempo', compressions:'Compressioni',
+  depth_hint:'Centro del torace, due mani, braccia tese. Premi 5–6 cm e rilascia completamente.',
+  swap_hint:'2 minuti: se c’è qualcuno, datevi il cambio ora. Interrompi il meno possibile.',
+  aed_hint:'C’è un defibrillatore (DAE) vicino? Manda qualcuno a prenderlo. Accendilo, segui la voce, continua a comprimere finché non dice stop.',
+  guides_eyebrow:'Altre emergenze', guides_title:'Cosa fare finché arrivano i soccorsi',
+  guides:[
+    ['Incosciente ma respira normalmente','Non reagisce, il torace si alza e si abbassa regolarmente.',[
+      'Chiama il 144.',
+      'Mettila su un fianco (posizione laterale): testa leggermente indietro, bocca verso il basso, così nulla finisce nelle vie respiratorie.',
+      'Controlla il respiro ogni minuto. Se si ferma: sulla schiena e inizia le compressioni.',
+      'Coprila, resta con lei.'],false],
+    ['Soffocamento','Non riesce a parlare, tossire o respirare, si porta le mani alla gola.',[
+      'Invita a tossire, se ancora possibile.',
+      '5 colpi decisi tra le scapole con il palmo, persona piegata in avanti.',
+      '5 compressioni addominali: da dietro, pugno tra ombelico e sterno, tira con uno strappo verso l’interno e l’alto.',
+      'Alterna 5 colpi e 5 compressioni finché non esce. Chiama il 144.',
+      'Se perde coscienza: stendila, 144, inizia subito le compressioni come nella rianimazione.'],true],
+    ['Ictus','All’improvviso: viso storto, un braccio cade, parola confusa.',[
+      'Test: fai sorridere (un angolo della bocca cade?), alzare entrambe le braccia (una scende?), ripetere una frase (impastata?).',
+      'Basta un segno: 144 subito, di’ «ictus» e a che ora è iniziato.',
+      'Fai sedere o stendere, niente da mangiare o bere.',
+      'Non aspettare che passi. La cura funziona solo nelle prime ore.'],true],
+    ['Infarto','Pressione o oppressione al petto da più di 5 minuti, spesso verso braccio, mascella, schiena; fiato corto, sudore freddo, nausea. Nelle donne spesso senza il tipico dolore al petto.',[
+      'Chiama subito il 144. Non guidare da solo.',
+      'Fai sedere, busto sollevato, allenta i vestiti, tranquillizza.',
+      'Nessuno sforzo. Niente da mangiare.',
+      'Se perde coscienza e non respira normalmente: rianimazione, manda a prendere un DAE.'],true],
+    ['Emorragia grave','Il sangue schizza o scorre forte e non si ferma.',[
+      'Chiama il 144.',
+      'Premi forte sulla ferita con un panno o un indumento, senza lasciare. Se possibile guanti o un sacchetto di plastica sulla mano.',
+      'Se passa attraverso: aggiungi stoffa, non togliere nulla, premi più forte.',
+      'Stendi la persona, tienila al caldo. Resta finché arrivano i soccorsi.'],true]
+  ],
+  nums_eyebrow:'Svizzera', nums_title:'Numeri d’emergenza',
+  nums:[['144','Ambulanza, emergenza sanitaria',true],['112','Numero d’emergenza europeo'],['117','Polizia'],['118','Pompieri'],['145','Tox Info Suisse, intossicazioni'],['1414','Rega, elicottero di soccorso'],['143','Telefono Amico, ascolto'],['147','Pro Juventute, bambini e giovani']],
+  nums_note:'Tutti i numeri sono gratuiti, anche senza credito e da qualsiasi rete. Tocca un numero e selezionalo per copiarlo.',
+  foot_src:'Contenuto secondo le linee guida dell’European Resuscitation Council (ERC 2021), come applicate in Svizzera dallo Swiss Resuscitation Council. Questa pagina non sostituisce un corso né una chiamata d’emergenza.',
+  foot_aed:'Defibrillatore più vicino: defikarte.ch', foot_course:'Trova un corso: resuscitation.ch',
+  foot_open:'Libero e riutilizzabile per ogni città. Nessun dato viene inviato o salvato, tranne la lingua scelta su questo dispositivo.'
+},
+en:{
+  tagline:'First aid for Bern. No app, no account.',
+  call_eyebrow:'Emergency? Call now', copy:'Copy number', copied:'Copied: 144',
+  call_text:'144 is the Swiss ambulance dispatch. Put the phone on speaker, lay it next to the person and stay on the line: the dispatcher tells you what to do.',
+  call_where:'Say WHERE first: street, number, floor. In Bern every minute counts until the ambulance arrives.',
+  cpr_eyebrow:'Resuscitation', cpr_title:'Person does not respond and is not breathing normally',
+  steps:[
+    ['Shout, shake','Shout loudly, shake the shoulders. No response? Call for help.'],
+    ['Check breathing, 10 seconds at most','Tilt the head back slightly, lift the chin. No breathing or only gasps counts as “not breathing”.'],
+    ['Call 144, speaker on','Or have someone else call and send someone for a defibrillator (AED).'],
+    ['Push. Now. Do not stop.','Press Start below: the page keeps the beat. 30 compressions, 2 breaths. If you cannot or do not want to give breaths: compressions only.']
+  ],
+  mode_std:'30 compressions : 2 breaths', mode_hands:'Compressions only',
+  dial_ready:'ready', dial_press:'push', dial_breath:'2 breaths', dial_go:'continue',
+  start:'Start: push to the beat', stop:'Stop',
+  rate:'Rate', elapsed:'Time', compressions:'Compressions',
+  depth_hint:'Centre of the chest, both hands, arms straight. Push 5–6 cm deep and release fully.',
+  swap_hint:'2 minutes: if someone else is there, swap now. Interrupt as briefly as possible.',
+  aed_hint:'Is a defibrillator (AED) nearby? Send someone to fetch it. Switch it on, follow the voice, keep pushing until it says stop.',
+  guides_eyebrow:'Other emergencies', guides_title:'What to do until help arrives',
+  guides:[
+    ['Unconscious but breathing normally','Does not respond, chest rises and falls regularly.',[
+      'Call 144.',
+      'Roll onto the side (recovery position): head tilted back slightly, mouth pointing down so nothing runs into the airway.',
+      'Check breathing every minute. If it stops: onto the back, start compressions.',
+      'Keep warm, stay with them.'],false],
+    ['Choking','Cannot speak, cough or breathe, clutches the throat.',[
+      'Encourage coughing while still possible.',
+      '5 firm back blows between the shoulder blades with the heel of your hand, person leaning forward.',
+      '5 abdominal thrusts: from behind, fist between navel and breastbone, pull sharply inwards and upwards.',
+      'Alternate 5 blows and 5 thrusts until it comes out. Call 144.',
+      'If they become unconscious: lay them down, 144, start compressions as in resuscitation.'],true],
+    ['Stroke','Sudden: face drooping, one arm drifting down, slurred speech.',[
+      'Test: ask them to smile (does one corner droop?), raise both arms (does one drift?), repeat a sentence (slurred?).',
+      'One sign is enough: call 144 now, say “stroke” and when it started.',
+      'Sit or lay them down, nothing to eat or drink.',
+      'Do not wait to see if it passes. Treatment only works in the first hours.'],true],
+    ['Heart attack','Pressure or tightness in the chest for more than 5 minutes, often spreading to arm, jaw or back; shortness of breath, cold sweat, nausea. In women often without the typical chest pain.',[
+      'Call 144 now. Do not drive yourself.',
+      'Sit them down, upper body raised, loosen tight clothing, reassure.',
+      'No exertion. Nothing to eat.',
+      'If they become unconscious and stop breathing normally: start resuscitation, send for an AED.'],true],
+    ['Severe bleeding','Blood spurts or flows heavily and does not stop.',[
+      'Call 144.',
+      'Press hard on the wound with a cloth or clothing and do not let go. Gloves or a plastic bag over your hand if possible.',
+      'If it soaks through: add more cloth, do not remove anything, press harder.',
+      'Lay the person down, keep them warm. Stay until the ambulance arrives.'],true]
+  ],
+  nums_eyebrow:'Switzerland', nums_title:'Emergency numbers',
+  nums:[['144','Ambulance, medical emergency',true],['112','European emergency number'],['117','Police'],['118','Fire brigade'],['145','Tox Info Suisse, poisoning'],['1414','Rega, air rescue'],['143','Listening line (Dargebotene Hand)'],['147','Pro Juventute, children and teens']],
+  nums_note:'All numbers are free, even without credit and from any network. Tap a number and select it to copy.',
+  foot_src:'Content follows the European Resuscitation Council guidelines (ERC 2021) as applied in Switzerland by the Swiss Resuscitation Council. This page replaces neither a course nor an emergency call.',
+  foot_aed:'Nearest defibrillator: defikarte.ch', foot_course:'Find a course: resuscitation.ch',
+  foot_open:'Open and free to reuse for any city. No data is sent or stored, except your language choice on this device.'
+}
+};
+
+var $ = function(id){ return document.getElementById(id); };
+var lang = 'de';
+try { var saved = localStorage.getItem('bh_lang'); if (saved && I18N[saved]) lang = saved; }
+catch (e) { /* storage unavailable */ }
+if (!saved) {
+  var nav = (navigator.language || 'de').slice(0,2).toLowerCase();
+  if (I18N[nav]) lang = nav;
+}
+
+function t(key){ return I18N[lang][key]; }
+
+function el(tag, cls, text){
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function render(){
+  document.documentElement.lang = lang;
+  var nodes = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < nodes.length; i++) {
+    var k = nodes[i].getAttribute('data-i18n');
+    if (typeof t(k) === 'string') nodes[i].textContent = t(k);
+  }
+  var lbs = document.querySelectorAll('.langs button');
+  for (var j = 0; j < lbs.length; j++) lbs[j].setAttribute('aria-pressed', String(lbs[j].getAttribute('data-lang') === lang));
+
+  // steps
+  var steps = $('cprSteps'); steps.textContent = '';
+  t('steps').forEach(function(s, idx){
+    var row = el('div','step');
+    row.appendChild(el('div','n', String(idx+1)));
+    var txt = el('div');
+    txt.appendChild(el('b', null, s[0]));
+    txt.appendChild(el('span', null, s[1]));
+    row.appendChild(txt);
+    steps.appendChild(row);
+  });
+
+  // guides
+  var g = $('guides'); g.textContent = '';
+  t('guides').forEach(function(item, idx){
+    var d = el('details');
+    var sm = el('summary');
+    var tag = el('span','tag' + (item[3] ? ' hot' : ''), item[3] ? '144' : '!');
+    sm.appendChild(tag);
+    sm.appendChild(el('span', null, item[0]));
+    var chev = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    chev.setAttribute('viewBox','0 0 24 24'); chev.setAttribute('class','chev'); chev.setAttribute('aria-hidden','true');
+    var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d','M6 9l6 6 6-6'); path.setAttribute('fill','none'); path.setAttribute('stroke','currentColor'); path.setAttribute('stroke-width','2.4'); path.setAttribute('stroke-linecap','round'); path.setAttribute('stroke-linejoin','round');
+    chev.appendChild(path); sm.appendChild(chev);
+    d.appendChild(sm);
+    var body = el('div','guide');
+    body.appendChild(el('div','when', item[1]));
+    var ol = el('ol');
+    item[2].forEach(function(line){ ol.appendChild(el('li', null, line)); });
+    body.appendChild(ol);
+    d.appendChild(body);
+    g.appendChild(d);
+  });
+
+  // numbers
+  var n = $('nums'); n.textContent = '';
+  t('nums').forEach(function(x){
+    var c = el('div','numcard' + (x[2] ? ' prime' : ''));
+    c.appendChild(el('b', null, x[0]));
+    c.appendChild(el('span', null, x[1]));
+    n.appendChild(c);
+  });
+
+  // metronome labels that depend on state
+  $('startBtn').textContent = running ? t('stop') : t('start');
+  if (!running) { $('dialSub').textContent = t('dial_ready'); }
+}
+
+document.querySelectorAll('.langs button').forEach(function(b){
+  b.addEventListener('click', function(){
+    lang = b.getAttribute('data-lang');
+    try { localStorage.setItem('bh_lang', lang); } catch (e) { /* ignore */ }
+    render();
+  });
+});
+
+// toast
+var toastTimer;
+function toast(msg){
+  var tt = $('toast'); tt.textContent = msg; tt.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(function(){ tt.classList.remove('show'); }, 1800);
+}
+
+$('copy144').addEventListener('click', function(){
+  var done = function(){ toast(t('copied')); };
+  var fallback = function(){
+    var r = document.createRange(); r.selectNodeContents($('mainNumber'));
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  };
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('144').then(done, fallback);
+    else fallback();
+  } catch (e) { fallback(); }
+});
+
+/* ---------- Metronome ---------- */
+var BPM = 110;                       // ERC 2021: 100–120 per minute
+var PERIOD = 60000 / BPM;            // ~545 ms
+var BREATH_MS = 5000;                // two breaths, under the 10 s ERC limit for the pause
+var running = false, mode = 'std';
+var count = 0, total = 0, startedAt = 0, nextBeat = 0, phase = 'press', breathEnd = 0;
+var tickTimer = null, ctx = null, wakeLock = null, lastSwapMinute = 0;
+
+function setMode(m){
+  mode = m;
+  $('modeStd').setAttribute('aria-pressed', String(m === 'std'));
+  $('modeHands').setAttribute('aria-pressed', String(m === 'hands'));
+}
+$('modeStd').addEventListener('click', function(){ setMode('std'); });
+$('modeHands').addEventListener('click', function(){ setMode('hands'); });
+
+function click(strong){
+  if (!ctx) return;
+  try {
+    var o = ctx.createOscillator(), gnode = ctx.createGain();
+    o.type = 'square'; o.frequency.value = strong ? 1100 : 820;
+    gnode.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gnode.gain.exponentialRampToValueAtTime(0.5, ctx.currentTime + 0.003);
+    gnode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.07);
+    o.connect(gnode); gnode.connect(ctx.destination);
+    o.start(ctx.currentTime); o.stop(ctx.currentTime + 0.08);
+  } catch (e) { /* audio unavailable */ }
+}
+
+function fmt(ms){
+  var s = Math.floor(ms/1000); var m = Math.floor(s/60); s = s % 60;
+  return m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function beat(){
+  count += 1; total += 1;
+  if (count > 30) count = 1;
+  var dial = $('dial');
+  dial.classList.remove('breath');
+  $('dialNum').textContent = String(count);
+  $('dialSub').textContent = t('dial_press');
+  $('total').textContent = String(total);
+  click(count === 1 || count % 10 === 0);
+  dial.classList.add('beat');
+  setTimeout(function(){ dial.classList.remove('beat'); }, 120);
+  try { if (navigator.vibrate) navigator.vibrate(25); } catch (e) { /* no vibration */ }
+  if (count === 30 && mode === 'std') { phase = 'breath'; breathEnd = performance.now() + BREATH_MS; }
+}
+
+function loop(){
+  var now = performance.now();
+  $('elapsed').textContent = fmt(now - startedAt);
+  var minute = Math.floor((now - startedAt) / 120000);
+  if (minute > lastSwapMinute) { lastSwapMinute = minute; $('swapNotice').hidden = false; }
+
+  if (phase === 'breath') {
+    var left = Math.ceil((breathEnd - now) / 1000);
+    var dial = $('dial'); dial.classList.add('breath');
+    $('dialNum').textContent = t('dial_breath');
+    $('dialSub').textContent = left > 0 ? String(left) : t('dial_go');
+    if (now >= breathEnd) { phase = 'press'; count = 0; nextBeat = now; click(true); }
+    return;
+  }
+  while (now >= nextBeat) { beat(); nextBeat += PERIOD; if (phase === 'breath') break; }
+}
+
+function start(){
+  running = true;
+  try { ctx = ctx || new (window.AudioContext || window.webkitAudioContext)(); if (ctx.state === 'suspended') ctx.resume(); } catch (e) { ctx = null; }
+  try { if (navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ wakeLock = l; }, function(){}); } catch (e) { /* no wake lock */ }
+  count = 0; total = 0; phase = 'press'; lastSwapMinute = 0;
+  startedAt = performance.now(); nextBeat = startedAt + 300;
+  $('swapNotice').hidden = true;
+  $('startBtn').setAttribute('data-running','true'); $('startBtn').textContent = t('stop');
+  $('total').textContent = '0';
+  tickTimer = setInterval(loop, 20);
+}
+
+function stop(){
+  running = false;
+  clearInterval(tickTimer); tickTimer = null;
+  try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch (e) { /* ignore */ }
+  var dial = $('dial'); dial.classList.remove('beat','breath');
+  $('dialNum').textContent = '—'; $('dialSub').textContent = t('dial_ready');
+  $('startBtn').setAttribute('data-running','false'); $('startBtn').textContent = t('start');
+}
+
+$('startBtn').addEventListener('click', function(){ if (running) stop(); else start(); });
+
+document.addEventListener('visibilitychange', function(){
+  if (document.visibilityState === 'visible' && running && ctx && ctx.state === 'suspended') { try { ctx.resume(); } catch (e) {} }
+});
+
+render();
+})();
+</script>
