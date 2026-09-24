@@ -30,6 +30,14 @@ abwechselnd, bei Bewusstlosigkeit Reanimation. Schlaganfall: FAST-Schema.
 
 Die Seite ersetzt keinen Kurs. Kurse: https://www.resuscitation.ch · nächster AED: https://www.defikarte.ch
 
+## Drucksachen (`print/`)
+
+- `flyer-A4-de-fr.pdf`: A4, Vorderseite Deutsch, Rückseite Französisch. Was, warum, wie, QR-Code.
+- `sticker-sheet-A4.pdf`: 6 Aufkleber 74 × 74 mm (3 × DE, 3 × FR) zum Ausschneiden.
+- `sticker-74mm.png`: ein Aufkleber als Bild, für Druckereien oder Etikettendrucker.
+- `qr-baern-hilft.svg` / `.png`: nur der QR-Code (Fehlerkorrektur H, verträgt Kratzer und Logos).
+- `flyer.html`: Quelle des Flyers, im Browser druckbar.
+
 ## Technik
 
 Eine Datei, `index.html`, ohne Build und ohne externe Skripte. Einzige externe Ressource
