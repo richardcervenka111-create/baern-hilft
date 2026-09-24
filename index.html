@@ -759,7 +759,7 @@ document.querySelectorAll('.chip[data-kind]').forEach(function(c){
   });
 });
 
-$('locBtn').addEventListener('click', function(){
+function locate(){
   var btn = $('locBtn');
   if (!navigator.geolocation) { $('nearState').textContent = t('loc_unavail'); return; }
   btn.disabled = true; $('nearState').textContent = t('locating'); $('nearLoc').hidden = true;
@@ -773,7 +773,8 @@ $('locBtn').addEventListener('click', function(){
       $('nearState').textContent = code === 1 ? t('loc_denied_perm') : code === 3 ? t('loc_timeout') : t('loc_unavail');
     }, {enableHighAccuracy: true, timeout: 25000, maximumAge: 0});
   } catch (e) { btn.disabled = false; $('nearState').textContent = t('loc_unavail'); }
-});
+}
+$('locBtn').addEventListener('click', locate);
 
 function showLoc(){
   var box = $('nearLoc'); box.textContent = ''; box.hidden = !nearOrigin;
@@ -792,6 +793,7 @@ function loadNear(){
   fetch('data/bern.json', {cache: 'default'}).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
     if (!d || !d.items || !d.items.length) return;
     nearData = d; $('near').hidden = false; renderNear();
+    if (location.protocol === 'https:' && !nearOrigin) locate();
   }).catch(function(){ /* no data: section stays hidden */ });
 }
 var _render = render;
