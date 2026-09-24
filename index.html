@@ -137,6 +137,8 @@ summary .tag.hot{background:var(--red-soft);color:var(--red)}
 .chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);background:var(--surface-2)}
 .chip .k{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:1px}
 .k-aed{background:var(--red)} .k-water{background:#2B7DD1} .k-wc{background:var(--go)}
+.k-wheel{background:transparent;width:auto;height:auto;font-size:14px;line-height:1}
+.near .wheel{font-size:14px;margin-left:4px}
 .nearlist{display:grid;gap:8px}
 .near{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .near .dist{font:400 22px/1 var(--display);font-variant-numeric:tabular-nums;min-width:64px}
@@ -226,6 +228,7 @@ footer a{color:var(--ink-2)}
       <button type="button" class="chip" data-kind="aed" aria-pressed="true"><span class="k k-aed"></span><span data-i18n="kind_aed">Defibrillator</span></button>
       <button type="button" class="chip" data-kind="water" aria-pressed="true"><span class="k k-water"></span><span data-i18n="kind_water">Trinkwasser</span></button>
       <button type="button" class="chip" data-kind="wc" aria-pressed="true"><span class="k k-wc"></span><span data-i18n="kind_wc">WC</span></button>
+      <button type="button" class="chip" id="chipWheel" aria-pressed="false"><span class="k k-wheel" aria-hidden="true">♿</span><span data-i18n="kind_wheel">Rollstuhlgängig</span></button>
     </div>
     <button type="button" class="btn-loc" id="locBtn" data-i18n="use_location">Meinen Standort verwenden</button>
     <div class="nearstate" id="nearState"></div>
@@ -303,7 +306,7 @@ de:{
       'Person hinlegen, warm halten. Bleibt bei ihr, bis der Rettungsdienst da ist.'],true]
   ],
   near_eyebrow:'In der Nähe', near_title:'Defibrillator, Trinkwasser, WC',
-  kind_aed:'Defibrillator', kind_water:'Trinkwasser', kind_wc:'WC',
+  kind_aed:'Defibrillator', kind_water:'Trinkwasser', kind_wc:'WC', kind_wheel:'Rollstuhlgängig', wheel_yes:'rollstuhlgängig', wheel_limited:'bedingt rollstuhlgängig', wheel_none:'Keine rollstuhlgängigen Einträge in den gewählten Kategorien.',
   use_location:'Meinen Standort verwenden', locating:'Standort wird gesucht …',
   loc_denied:'Kein Standort. Die Liste ist ab Stadtzentrum (Zytglogge) sortiert.',
   loc_ok:'Sortiert ab deinem Standort.', from_centre:'Sortiert ab Stadtzentrum (Zytglogge). Standort freigeben für deine Umgebung.',
@@ -365,7 +368,7 @@ fr:{
       'Allongez la personne, gardez-la au chaud. Restez jusqu’à l’arrivée des secours.'],true]
   ],
   near_eyebrow:'À proximité', near_title:'Défibrillateur, eau potable, WC',
-  kind_aed:'Défibrillateur', kind_water:'Eau potable', kind_wc:'WC',
+  kind_aed:'Défibrillateur', kind_water:'Eau potable', kind_wc:'WC', kind_wheel:'Accessible en fauteuil', wheel_yes:'accessible en fauteuil roulant', wheel_limited:'partiellement accessible', wheel_none:'Aucune entrée accessible en fauteuil dans les catégories choisies.',
   use_location:'Utiliser ma position', locating:'Recherche de la position…',
   loc_denied:'Pas de position. La liste est triée depuis le centre-ville (Zytglogge).',
   loc_ok:'Trié depuis votre position.', from_centre:'Trié depuis le centre-ville (Zytglogge). Autorisez la position pour vos environs.',
@@ -427,7 +430,7 @@ it:{
       'Stendi la persona, tienila al caldo. Resta finché arrivano i soccorsi.'],true]
   ],
   near_eyebrow:'Nelle vicinanze', near_title:'Defibrillatore, acqua potabile, WC',
-  kind_aed:'Defibrillatore', kind_water:'Acqua potabile', kind_wc:'WC',
+  kind_aed:'Defibrillatore', kind_water:'Acqua potabile', kind_wc:'WC', kind_wheel:'Accessibile in sedia a rotelle', wheel_yes:'accessibile in sedia a rotelle', wheel_limited:'parzialmente accessibile', wheel_none:'Nessuna voce accessibile in sedia a rotelle nelle categorie scelte.',
   use_location:'Usa la mia posizione', locating:'Ricerca della posizione…',
   loc_denied:'Nessuna posizione. L’elenco è ordinato dal centro città (Zytglogge).',
   loc_ok:'Ordinato dalla tua posizione.', from_centre:'Ordinato dal centro città (Zytglogge). Consenti la posizione per i tuoi dintorni.',
@@ -489,7 +492,7 @@ en:{
       'Lay the person down, keep them warm. Stay until the ambulance arrives.'],true]
   ],
   near_eyebrow:'Nearby', near_title:'Defibrillator, drinking water, toilets',
-  kind_aed:'Defibrillator', kind_water:'Drinking water', kind_wc:'Toilets',
+  kind_aed:'Defibrillator', kind_water:'Drinking water', kind_wc:'Toilets', kind_wheel:'Wheelchair accessible', wheel_yes:'wheelchair accessible', wheel_limited:'partly wheelchair accessible', wheel_none:'No wheelchair-accessible entries in the selected categories.',
   use_location:'Use my location', locating:'Finding your location…',
   loc_denied:'No location. The list is sorted from the city centre (Zytglogge).',
   loc_ok:'Sorted from your location.', from_centre:'Sorted from the city centre (Zytglogge). Allow location for your surroundings.',
@@ -703,7 +706,7 @@ document.addEventListener('visibilitychange', function(){
 
 /* ---------- Nearby (data/bern.json, built by scripts/fetch_osm.py) ---------- */
 var CENTRE = {lat: 46.948, lon: 7.4474}; // Zytglogge
-var nearData = null, nearOrigin = null, nearKinds = {aed:true, water:true, wc:true};
+var nearData = null, nearOrigin = null, nearKinds = {aed:true, water:true, wc:true}, wheelOnly = false;
 
 function haversine(a, b){
   var R = 6371000, toRad = Math.PI/180;
@@ -717,7 +720,7 @@ function renderNear(){
   if (!nearData) return;
   var list = $('nearList'); list.textContent = '';
   var origin = nearOrigin || CENTRE;
-  var rows = nearData.items.filter(function(x){ return nearKinds[x.k]; }).map(function(x){
+  var rows = nearData.items.filter(function(x){ return nearKinds[x.k] && (!wheelOnly || x.w === 'yes'); }).map(function(x){
     return {x:x, d:haversine(origin, x)};
   }).sort(function(a,b){ return a.d-b.d; }).slice(0, 8);
   rows.forEach(function(r){
@@ -731,6 +734,7 @@ function renderNear(){
     if (x.l) meta.push(x.l);
     if (x.h) meta.push(x.h);
     if (x.a) meta.push(t('access_restricted'));
+    if (x.w === 'yes') meta.push(t('wheel_yes')); else if (x.w === 'limited') meta.push(t('wheel_limited'));
     if (meta.length) what.appendChild(el('span', null, meta.join(' · ')));
     row.appendChild(what);
     var a = el('a', null, t('route'));
@@ -739,12 +743,13 @@ function renderNear(){
     row.appendChild(a);
     list.appendChild(row);
   });
-  $('nearState').textContent = nearOrigin ? t('loc_ok') : t('from_centre');
+  $('nearState').textContent = (wheelOnly && !rows.length) ? t('wheel_none') : (nearOrigin ? t('loc_ok') : t('from_centre'));
   $('nearAttrib').textContent = t('attrib') + (nearData.fetched || '');
   $('locBtn').textContent = t('use_location');
 }
 
-document.querySelectorAll('.chip').forEach(function(c){
+$('chipWheel').addEventListener('click', function(){ wheelOnly = !wheelOnly; $('chipWheel').setAttribute('aria-pressed', String(wheelOnly)); renderNear(); });
+document.querySelectorAll('.chip[data-kind]').forEach(function(c){
   c.addEventListener('click', function(){
     var k = c.getAttribute('data-kind');
     nearKinds[k] = !nearKinds[k];
