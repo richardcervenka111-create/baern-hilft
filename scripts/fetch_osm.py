@@ -50,9 +50,11 @@ def compact(el):
     name = tags.get("name") or tags.get("description") or tags.get("operator")
     if name:
         row["n"] = name[:80]
-    loc = tags.get("defibrillator:location") or tags.get("indoor")
+    loc = tags.get("defibrillator:location") or tags.get("defibrillator:location:de") or tags.get("level") and ("Level " + str(tags["level"]))
     if loc:
         row["l"] = str(loc)[:120]
+    if tags.get("indoor") == "yes":
+        row["i"] = 1
     if tags.get("opening_hours"):
         row["h"] = tags["opening_hours"][:80]
     if tags.get("wheelchair"):
