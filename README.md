@@ -45,11 +45,23 @@ sind zwei Schriften von Google Fonts (Atkinson Hyperlegible für Lesbarkeit unte
 Archivo Black für die Zahlen), mit System-Fallback. Alles andere ist inline.
 Dark Mode folgt dem Gerät. Texte werden ausschliesslich über `textContent` gesetzt.
 
+## Zwei Projekte, ein Zweck
+
+| | Bärn hilft | [Notfallblatt](https://github.com/richardcervenka111-create/notfallblatt) |
+|---|---|---|
+| Für wen | Passantinnen und Passanten im Notfall | Menschen mit Medikamenten, Angehörige, Spitex, Apotheken |
+| Moment | jetzt, in Panik, Handy in der Hand | in Ruhe zu Hause, dann am Kühlschrank |
+| Live | richardcervenka111-create.github.io/baern-hilft | richardcervenka111-create.github.io/notfallblatt |
+| Daten | 1 118 Punkte aus OpenStreetMap, im Repo | keine, alles bleibt im Browser |
+
 ## Für eine andere Stadt anpassen
 
-1. Notrufnummern im Objekt `I18N[lang].nums` ändern (und 144 im Anruf-Block, falls anders).
-2. `tagline`, `call_where` und den Titel anpassen.
-3. Fertig. Lizenz: frei nutzbar (CC0). Keine Gewähr, siehe Fusszeile der Seite.
+1. Repo forken, in den Settings **Pages → Source: GitHub Actions** wählen. Der Workflow deployt bei jedem Push.
+2. In `scripts/fetch_osm.py` die `AREA` auf die eigene Gemeinde setzen (Overpass-Area-ID = 3600000000 + OSM-Relation-ID),
+   Abfrage auf overpass-turbo.eu laufen lassen, Export mit `--raw` einlesen → `data/bern.json` (Name beibehalten oder in `index.html` anpassen).
+3. In `index.html`: `CENTRE` (Stadtzentrum), Notrufnummern in `I18N[lang].nums`, `tagline` und `call_where`.
+4. `print/`: QR-Code neu erzeugen (`segno`), Flyer-Texte anpassen, mit Headless Chromium drucken.
+Lizenz: CC0. Keine Gewähr, siehe Fusszeile der Seite.
 
 ## Offen
 
