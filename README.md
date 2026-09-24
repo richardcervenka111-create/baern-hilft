@@ -3,7 +3,8 @@
 Eine Seite, ein Zweck: wenn jemand in Bern zusammenbricht, soll das Telefon in der Hand
 den Takt geben und sagen, was zu tun ist. Ohne App, ohne Konto, ohne Tracking.
 
-Live: https://claude.ai/artifact/BGbdRF2PYbgn2tzojxHJPZ (privat, bis der Besitzer sie teilt)
+Live: **https://richardcervenka111-create.github.io/baern-hilft/** (GitHub Pages, öffentlich)
+Spiegel: https://claude.ai/artifact/BGbdRF2PYbgn2tzojxHJPZ (privat, bis der Besitzer sie teilt)
 
 ## Was die Seite kann
 
@@ -44,7 +45,6 @@ Dark Mode folgt dem Gerät. Texte werden ausschliesslich über `textContent` ges
 
 ## Offen
 
-- Karte «nächster Defibrillator / Trinkwasserbrunnen / WC» für Bern aus OpenStreetMap:
-  braucht Zugriff auf `overpass-api.de` beim Bauen (im Erstellungs-Container gesperrt).
-  Die Daten würden statisch in die Seite eingebettet, damit sie offline funktioniert.
-- Ein öffentliches Git-Repository, damit andere Städte forken können.
+- `data/bern.json` fehlt noch: `python3 scripts/fetch_osm.py` (oder `--url` im Browser öffnen,
+  Antwort speichern, `--raw datei.json`). Sobald die Datei im Repo liegt, zeigt die Seite die
+  Sektion «In der Nähe» (AED, Trinkwasser, WC) ab Standort oder ab Zytglogge.
