@@ -1,0 +1,177 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-24T21:19:17Z",
+    "timestamp_areas_base": "2026-09-22T08:45:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 2267155796,
+      "lat": 46.944049,
+      "lon": 7.3968596,
+      "tags": {
+        "access": "yes",
+        "amenity": "drinking_water",
+        "bottle": "yes",
+        "fee": "no",
+        "operator": "Immobilien Stadt Bern",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7728981170,
+      "lat": 46.9413545,
+      "lon": 7.4312479,
+      "tags": {
+        "access": "yes",
+        "amenity": "drinking_water",
+        "fee": "no",
+        "fountain": "bubbler"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8306332235,
+      "lat": 46.9457724,
+      "lon": 7.3627751,
+      "tags": {
+        "amenity": "drinking_water",
+        "fountain": "drinking"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9043997432,
+      "lat": 46.9487582,
+      "lon": 7.4323316,
+      "tags": {
+        "amenity": "drinking_water",
+        "fountain": "drinking"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9205468547,
+      "lat": 46.947597,
+      "lon": 7.3811047,
+      "tags": {
+        "amenity": "drinking_water"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9610818266,
+      "lat": 46.9431096,
+      "lon": 7.3494447,
+      "tags": {
+        "access": "yes",
+        "amenity": "drinking_water",
+        "covered": "no",
+        "fee": "no",
+        "lit": "yes",
+        "name": "2000"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10917413825,
+      "lat": 46.9474108,
+      "lon": 7.440582,
+      "tags": {
+        "amenity": "drinking_water",
+        "description": "Am 23.7.2025 kommt bei Knopfdruck nur tröpfelndes Wasser, da ist man besser beraten, woanders Wasser zu finden.",
+        "man_made": "drinking_fountain",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12270840857,
+      "lat": 46.9447974,
+      "lon": 7.4471406,
+      "tags": {
+        "amenity": "drinking_water",
+        "fee": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12480272600,
+      "lat": 46.9408311,
+      "lon": 7.3861093,
+      "tags": {
+        "amenity": "drinking_water",
+        "fountain": "drinking"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13048461516,
+      "lat": 46.9504767,
+      "lon": 7.3756685,
+      "tags": {
+        "access": "yes",
+        "amenity": "drinking_water"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13048497082,
+      "lat": 46.9334016,
+      "lon": 7.4528654,
+      "tags": {
+        "access": "yes",
+        "amenity": "drinking_water"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13787010601,
+      "lat": 46.9377775,
+      "lon": 7.4516441,
+      "tags": {
+        "amenity": "drinking_water"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13796994940,
+      "lat": 46.9567796,
+      "lon": 7.4235564,
+      "tags": {
+        "access": "yes",
+        "amenity": "drinking_water",
+        "bottle": "yes",
+        "fee": "no",
+        "indoor": "no",
+        "lit": "no",
+        "name": "Halenbrunnen",
+        "seasonal": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13859979325,
+      "lat": 46.9400663,
+      "lon": 7.3901411,
+      "tags": {
+        "amenity": "drinking_water",
+        "man_made": "water_tap"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14133505033,
+      "lat": 46.9435379,
+      "lon": 7.3818331,
+      "tags": {
+        "amenity": "drinking_water",
+        "man_made": "water_tap"
+      }
+    }
+  ]
+}
