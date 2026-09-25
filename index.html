@@ -398,6 +398,8 @@ var top=document.querySelector('.k-top.sticky'); if(top){ var on=false; window.a
 'use strict';
 var I18N = {
 de:{
+  description:'Notfallhilfe für Bern: Reanimations-Metronom 30:2, Schweizer Notrufnummern und Erste-Hilfe-Schritte in vier Sprachen. Ohne App, ohne Tracking.',
+  a_lang:'Sprache', a_mode:'Modus',
   tagline:'Erste Hilfe für Bern. Ohne App, ohne Konto.',
   call_eyebrow:'Notfall? Sofort anrufen', copy:'Nummer kopieren', copied:'Kopiert: 144',
   call_text:'144 ist die Sanitätsnotrufzentrale. Lautsprecher einschalten, Telefon neben die Person legen und nicht auflegen: die Zentrale sagt dir, was zu tun ist.',
@@ -405,7 +407,7 @@ de:{
   cpr_eyebrow:'Reanimation', cpr_title:'Person reagiert nicht und atmet nicht normal',
   steps:[
     ['Ansprechen, schütteln','Laut rufen, an den Schultern rütteln. Keine Reaktion? Um Hilfe rufen.'],
-    ['Atmung prüfen, höchstens 10 Sekunden','Kopf leicht nach hinten, Kinn anheben. Keine oder nur schnappende Atmung zählt als „atmet nicht“.'],
+    ['Atmung prüfen, höchstens 10 Sekunden','Kopf leicht nach hinten, Kinn anheben. Keine oder nur schnappende Atmung zählt als «atmet nicht».'],
     ['144 anrufen, Lautsprecher an','Oder jemanden anrufen lassen und einen AED holen lassen.'],
     ['Drücken. Sofort. Nicht aufhören.','Start unten drücken: die Seite gibt den Takt. 30 Mal drücken, 2 Mal beatmen. Wer nicht beatmen will oder kann: nur drücken.']
   ],
@@ -431,7 +433,7 @@ de:{
       'Wird die Person bewusstlos: hinlegen, 144, sofort drücken wie bei der Reanimation.'],true],
     ['Schlaganfall','Plötzlich: schiefes Gesicht, ein Arm sinkt ab, undeutliche Sprache.',[
       'Test: Lächeln lassen (hängt ein Mundwinkel?), beide Arme heben lassen (sinkt einer?), einen Satz nachsprechen lassen (verwaschen?).',
-      'Ein Zeichen reicht: sofort 144, Wort „Schlaganfall“ sagen und wann es begonnen hat.',
+      'Ein Zeichen reicht: sofort 144, Wort «Schlaganfall» sagen und wann es begonnen hat.',
       'Hinsetzen oder hinlegen, nichts zu essen oder trinken geben.',
       'Nicht abwarten, ob es besser wird. Die Behandlung wirkt nur in den ersten Stunden.'],true],
     ['Herzinfarkt','Druck oder Enge in der Brust länger als 5 Minuten, oft mit Ausstrahlung in Arm, Kiefer, Rücken; Atemnot, kalter Schweiss, Übelkeit. Bei Frauen oft ohne den typischen Brustschmerz.',[
@@ -443,7 +445,7 @@ de:{
       '144 anrufen.',
       'Fest auf die Wunde drücken, mit Tuch oder Kleidung, und nicht loslassen. Wenn möglich Handschuhe oder einen Plastikbeutel über die Hand.',
       'Blutet es durch: mehr Stoff darauf, nicht wegnehmen, noch fester drücken.',
-      'Person hinlegen, warm halten. Bleibt bei ihr, bis der Rettungsdienst da ist.'],true]
+      'Person hinlegen, warm halten. Bei ihr bleiben, bis der Rettungsdienst da ist.'],true]
   ],
   near_eyebrow:'In der Nähe', near_title:'Defibrillator, Trinkwasser, WC',
   kind_aed:'Defibrillator', kind_water:'Trinkwasser', kind_wc:'WC', kind_wheel:'Rollstuhlgängig', wheel_yes:'rollstuhlgängig', wheel_limited:'bedingt rollstuhlgängig', wheel_none:'Keine rollstuhlgängigen Einträge in den gewählten Kategorien.',
@@ -460,6 +462,8 @@ de:{
   foot_open:'Offen und frei nutzbar für jede Stadt. Keine Daten werden gesendet oder gespeichert, ausser deiner Sprachwahl auf diesem Gerät.'
 },
 fr:{
+  description:'Aide d’urgence pour Berne : métronome de réanimation 30:2, numéros d’urgence suisses et gestes de premiers secours en quatre langues. Sans app, sans traçage.',
+  a_lang:'Langue', a_mode:'Mode',
   tagline:'Premiers secours pour Berne. Sans appli, sans compte.',
   call_eyebrow:'Urgence ? Appelez tout de suite', copy:'Copier le numéro', copied:'Copié : 144',
   call_text:'Le 144 est la centrale d’appels sanitaires urgents. Mettez le haut-parleur, posez le téléphone près de la personne et ne raccrochez pas : la centrale vous guide.',
@@ -522,6 +526,8 @@ fr:{
   foot_open:'Libre et réutilisable pour toute ville. Aucune donnée n’est envoyée ni enregistrée, sauf votre choix de langue sur cet appareil.'
 },
 it:{
+  description:'Aiuto d’emergenza per Berna: metronomo per la rianimazione 30:2, numeri d’emergenza svizzeri e passi di primo soccorso in quattro lingue. Senza app, senza tracciamento.',
+  a_lang:'Lingua', a_mode:'Modalità',
   tagline:'Primo soccorso per Berna. Senza app, senza account.',
   call_eyebrow:'Emergenza? Chiama subito', copy:'Copia il numero', copied:'Copiato: 144',
   call_text:'Il 144 è la centrale d’emergenza sanitaria. Attiva il vivavoce, metti il telefono accanto alla persona e non riagganciare: la centrale ti guida.',
@@ -584,9 +590,11 @@ it:{
   foot_open:'Libero e riutilizzabile per ogni città. Nessun dato viene inviato o salvato, tranne la lingua scelta su questo dispositivo.'
 },
 en:{
+  description:'Emergency help for Bern: CPR metronome 30:2, Swiss emergency numbers and first-aid steps in four languages. No app, no tracking.',
+  a_lang:'Language', a_mode:'Mode',
   tagline:'First aid for Bern. No app, no account.',
   call_eyebrow:'Emergency? Call now', copy:'Copy number', copied:'Copied: 144',
-  call_text:'144 is the Swiss ambulance dispatch. Put the phone on speaker, lay it next to the person and stay on the line: the dispatcher tells you what to do.',
+  call_text:'144 is the Swiss emergency medical dispatch centre. Put the phone on speaker, lay it next to the person and stay on the line: the dispatcher tells you what to do.',
   call_where:'Say WHERE first: street, number, floor. In Bern every minute counts until the ambulance arrives.',
   cpr_eyebrow:'Resuscitation', cpr_title:'Person does not respond and is not breathing normally',
   steps:[
@@ -606,8 +614,8 @@ en:{
   guides:[
     ['Unconscious but breathing normally','Does not respond, chest rises and falls regularly.',[
       'Call 144.',
-      'Roll onto the side (recovery position): head tilted back slightly, mouth pointing down so nothing runs into the airway.',
-      'Check breathing every minute. If it stops: onto the back, start compressions.',
+      'Roll them onto their side (recovery position): head tilted back slightly, mouth pointing down so nothing runs into the airway.',
+      'Check breathing every minute. If it stops: roll them onto their back and start compressions.',
       'Keep warm, stay with them.'],false],
     ['Choking','Cannot speak, cough or breathe, clutches the throat.',[
       'Encourage coughing while still possible.',
@@ -635,7 +643,7 @@ en:{
   kind_aed:'Defibrillator', kind_water:'Drinking water', kind_wc:'Toilets', kind_wheel:'Wheelchair accessible', wheel_yes:'wheelchair accessible', wheel_limited:'partly wheelchair accessible', wheel_none:'No wheelchair-accessible entries in the selected categories.',
   use_location:'Use my location', locating:'Finding your location…',
   loc_denied:'No location. The list is sorted from the city centre (Zytglogge).',
-  loc_ok:'Sorted from your location.', from_centre:'Sorted from the city centre (Zytglogge). Allow location for your surroundings.',
+  loc_ok:'Sorted from your location.', from_centre:'Sorted from the city centre (Zytglogge). Share your location to see what is near you.',
   route:'Directions', attrib:'Data: OpenStreetMap contributors (ODbL), as of ', loc_acc:'Accuracy', loc_check:'Check location on map', loc_denied_perm:'Location denied. iPhone: Settings → Privacy → Location Services → Safari Websites → “While Using”. Then reload.', loc_unavail:'Location unavailable (no GPS, airplane mode?). List from Zytglogge.', loc_timeout:'Location took too long. Step outside and try again.', loc_inaccurate:'Inaccurate: the position probably comes from Wi-Fi, not GPS.',
   lbl_aed:'Defibrillator (AED)', lbl_water:'Drinking water', lbl_wc:'Public toilet', access_restricted:'restricted access',
   nums_eyebrow:'Switzerland', nums_title:'Emergency numbers',
@@ -674,6 +682,9 @@ function render(){
   }
   var lbs = document.querySelectorAll('.langs button');
   for (var j = 0; j < lbs.length; j++) lbs[j].setAttribute('aria-pressed', String(lbs[j].getAttribute('data-lang') === lang));
+  document.querySelector('meta[name=description]').content = t('description');
+  document.querySelector('.langs').setAttribute('aria-label', t('a_lang'));
+  document.querySelector('.seg').setAttribute('aria-label', t('a_mode'));
 
   // steps
   var steps = $('cprSteps'); steps.textContent = '';
@@ -855,6 +866,17 @@ function haversine(a, b){
   return 2*R*Math.asin(Math.sqrt(h));
 }
 function fmtDist(m){ return m < 950 ? Math.round(m/10)*10 + ' m' : (m/1000).toFixed(1).replace('.', lang==='en' ? '.' : ',') + ' km'; }
+/* OSM opening_hours use English two-letter weekday codes; show them in the page language (single pass, whole tokens only). */
+var DAY_CODES = {
+  de: {Mo:'Mo', Tu:'Di', We:'Mi', Th:'Do', Fr:'Fr', Sa:'Sa', Su:'So'},
+  fr: {Mo:'Lu', Tu:'Ma', We:'Me', Th:'Je', Fr:'Ve', Sa:'Sa', Su:'Di'},
+  it: {Mo:'Lu', Tu:'Ma', We:'Me', Th:'Gi', Fr:'Ve', Sa:'Sa', Su:'Do'}
+};
+function fmtHours(h){
+  var map = DAY_CODES[lang];
+  if (!map) return h;
+  return String(h).replace(/\b(Mo|Tu|We|Th|Fr|Sa|Su)\b/g, function(code){ return map[code] || code; });
+}
 
 function renderNear(){
   if (!nearData) return;
@@ -872,7 +894,7 @@ function renderNear(){
     var meta = [];
     if (x.n) meta.push(label);
     if (x.l) meta.push(x.l);
-    if (x.h) meta.push(x.h);
+    if (x.h) meta.push(fmtHours(x.h));
     if (x.a) meta.push(t('access_restricted'));
     if (x.w === 'yes' || x.w === 'designated') meta.push(t('wheel_yes')); else if (x.w === 'limited') meta.push(t('wheel_limited'));
     if (meta.length) what.appendChild(el('span', null, meta.join(' · ')));
